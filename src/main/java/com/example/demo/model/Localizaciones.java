@@ -17,7 +17,7 @@ public class Localizaciones {
 	private String pista;
 	private String imagenPista;
 	private String rutaId;
-	private PreguntaModel pregunta;
+	private PreguntaModel pregunta;//unico objeto ya que no nos da tiempo a implementar
 
 	public String getId() {
 		return id;

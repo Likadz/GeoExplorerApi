@@ -1,8 +1,9 @@
 package com.example.demo.model;
 
+//el objeto de pregunta en el modelo de localizaciones
 public class PreguntaModel {
 	
-	
+		
 		private String pregunta;
 		private String respuesta1;
 		private String respuesta2;

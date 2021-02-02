@@ -45,16 +45,8 @@ public class LocalizacionController {
 	@PostMapping("/add")
 	public void insertarLocalizacion(@RequestBody Localizaciones nuevaLocalizacion) {
 		localizacionRepository.save(nuevaLocalizacion);
-		//addRuta(nuevaLocalizacion);
 	}
 
-	/*public void addRuta(Localizaciones nuevaLocalizacion){
-		Rutas ruta = rutaRepository.findById(nuevaLocalizacion.getRutaId()).orElse(null);
-		List<Localizaciones>lista=ruta.getListaLocalizaciones();
-		lista.add(nuevaLocalizacion);
-		ruta.setListaLocalizaciones(lista);
-		rutaRepository.save(ruta);
-	}*/
 	/***********************************************************
 	 ********************** READ *******************************
 	 ***********************************************************/

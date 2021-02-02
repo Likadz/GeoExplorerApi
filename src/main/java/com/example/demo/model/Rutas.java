@@ -15,10 +15,10 @@ public class Rutas {
 	private String tematica;
 	private float duracion;
 	private String descripcion;
-	private String transporte; //DUDA
+	private String transporte; 
 	private String imagen;
-	private int dificultad; //DUDA
-	private List<Localizaciones> listaLocalizaciones;
+	private int dificultad;
+	private List<Localizaciones> listaLocalizaciones;//listado de todas las localizaciones que tiene la ruta 
 
 	public String getId() {
 		return id;

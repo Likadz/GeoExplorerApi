@@ -20,7 +20,5 @@ public interface RutaRepository extends MongoRepository<Rutas, String>{
 
 	Rutas findTopByOrderByIdDesc();
 
-	//List<Rutas> findCiudadDistinctByCiudad();
-
 
 }

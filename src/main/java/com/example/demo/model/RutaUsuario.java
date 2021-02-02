@@ -15,6 +15,7 @@ public class RutaUsuario {
 	private String rutaId;
 	private int puntuacion;
 	private boolean activo;
+	//posicion de los jugadores en el mapa
 	private float lat;
 	private float lng;
 

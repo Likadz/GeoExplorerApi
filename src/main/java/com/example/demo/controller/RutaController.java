@@ -78,7 +78,6 @@ public class RutaController {
 	@GetMapping("/getUltimaRuta")
 	public Rutas getUltimaRuta() {
 		Rutas ruta = rutaRepository.findTopByOrderByIdDesc();
-
 		return ruta;
 	}
 
@@ -106,11 +105,10 @@ public class RutaController {
 	public Rutas editarRutaIdLocalizaciones(@PathVariable String id){
 		Rutas ruta =rutaRepository.findById(id).orElse(null);
 		List<Localizaciones> lista = localizacionRepository.findByRutaId(id);
-		System.out.println("LA RUTA " + ruta.getDescripcion() + " lista " + lista.size());
 		ruta.setListaLocalizaciones(lista);
-		System.out.println("RUTA LISTA MODIFICADA " + ruta.getListaLocalizaciones());
 		return rutaRepository.save(ruta);
 	}
+	
 	//editar ruta por su nombre
 	@PutMapping("/editNombre/{nombre}")
 	public List<Rutas> editarRutaNombre(@PathVariable String nombre, @RequestBody Rutas ruta){

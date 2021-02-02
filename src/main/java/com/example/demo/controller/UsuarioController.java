@@ -35,13 +35,13 @@ public class UsuarioController {
 	/**************************************************/
 	/********************** LEER **********************/
 	/**************************************************/
-
+	//obtener todos los usuarios
 	@GetMapping("/getAll")
 	public List<Usuarios> getUsuarios() {
 		List<Usuarios> listaUsuarios = usuarioRepository.findAll();
 		return listaUsuarios;
 	}
-
+	//obtener usuario por su id
 	@GetMapping("/getId/{id}")
 	public Usuarios getById(@PathVariable String id){
 
@@ -53,13 +53,13 @@ public class UsuarioController {
 	public List<Usuarios> getAllById(@PathVariable String id) {
 		return usuarioRepository.findUsuarioById(id);
 	}
-
+	//obtener usuario por su campo 'usuario' (el nick)
 	@GetMapping("/getUsuario/{usuario}")
 	public List<Usuarios> getUsuariosByUsuario(@PathVariable String usuario) {
 		return usuarioRepository.findByUsuario(usuario);
 	}
 
-	//para hacer el login
+	//para hacer el login, pasamos los parametros nick, contraseña y rol 
 	@GetMapping("/getLogin/{usuario}/{contrasena}/{rol}")
 	public List<Usuarios> getUsuariosByUsuarioContrasenaRol(@PathVariable String usuario, @PathVariable String contrasena, @PathVariable String rol) {
 		return usuarioRepository.findUsuarioByUsuarioAndContrasenaAndRol(usuario,contrasena,rol);
@@ -68,7 +68,7 @@ public class UsuarioController {
 	/**************************************************/
 	/******************* MODIFICAR ********************/
 	/**************************************************/
-
+	//editar la contraseña de un usuario por su id
 	@PutMapping("/editContrasenaId/{id}/{contrasena}")
 	public void updateContrasenaById(@PathVariable String id, @PathVariable String contrasena){
 
@@ -78,7 +78,7 @@ public class UsuarioController {
 
 	}
 
-	/*DUDAS DE SI ES ASI*/
+	//modificar usuario por su id
 	@PutMapping("/editUsuario/{id}")
 	public void editUsuarioId(@PathVariable String id, @RequestBody Usuarios nuevoUsuario) {
 
@@ -95,16 +95,15 @@ public class UsuarioController {
 		usuarioRepository.saveAll(listaUsuarios);
 	 }
 
-
+	//conectar usuario, cambiar el estado del atributo 'conectado' a true para saber que esta en partida
 	@PutMapping("/conectarUsuario/{id}")
 	public void conectarUsuario(@PathVariable String id){
-
 		Query query = new Query(Criteria.where("id").is(id));
 		Update update = new Update().set("conectado", true);
 		mongoTemplate.updateFirst(query, update, Usuarios.class);
 
 	}
-
+	//desconectar usuario, cambiar el estado del atributo 'conectado' a false
 	@PutMapping("/desconectarUsuario/{id}")
 	public void desconectarUsuario(@PathVariable String id){
 
@@ -118,12 +117,12 @@ public class UsuarioController {
 	/**************************************************/
 	/********************* BORRAR *********************/
 	/**************************************************/
-
+	//eliminar un usuario por su id
 	@DeleteMapping("/deleteId/{id}")
 	public void delete(@PathVariable String id) {
 		usuarioRepository.deleteById(id);
 	}
-
+	//eliminar el usuario con un nick x
 	@DeleteMapping("/deleteUsername/{username}")
 	public void deleteByUsername(@PathVariable String username) {
 		usuarioRepository.deleteByUsuario(username);
