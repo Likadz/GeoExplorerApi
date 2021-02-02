@@ -1,3 +1,4 @@
+ 
 package com.example.demo.controller;
 
 import java.util.List;
@@ -27,8 +28,8 @@ public class RutaUsuarioController {
 	/**************************************************/
 	//crear rutaUsuario
 	@PostMapping("/add")
-	public void insertarUsuario(@RequestBody RutaUsuario nuevaRutaUsuario) {
-		rutaUsuarioRepository.save(nuevaRutaUsuario);
+	public RutaUsuario insertarUsuario(@RequestBody RutaUsuario nuevaRutaUsuario) {
+		return rutaUsuarioRepository.save(nuevaRutaUsuario);
 	}
 
 	/**************************************************/
@@ -73,7 +74,7 @@ public class RutaUsuarioController {
 
 	 }
 
-	//editar si la partida está activa 
+	//editar si la partida está activa
 	@PutMapping("/editRutaUsuarioActivar/{id}")
 	public void conectarUsuario(@PathVariable String id){
 
@@ -92,6 +93,15 @@ public class RutaUsuarioController {
 
 	}
 
+	//editar posicion usuario
+		@PutMapping("/editRutaPosicion/{id}/{lat}/{lng}")
+		public void editarLat(@PathVariable String id, @PathVariable Float lat,@PathVariable Float lng){
+
+			Query query = new Query(Criteria.where("id").is(id));
+			Update update = new Update().set("lat", lat).set("lng", lng);
+			mongoTemplate.updateFirst(query, update, RutaUsuario.class);
+
+		}
 
 	/**************************************************/
 	/********************* BORRAR *********************/
@@ -119,3 +129,8 @@ public class RutaUsuarioController {
 	}
 
 }
+
+
+
+
+

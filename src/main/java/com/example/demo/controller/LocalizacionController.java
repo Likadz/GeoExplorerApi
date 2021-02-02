@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Localizaciones;
-import com.example.demo.model.Preguntas;
 import com.example.demo.model.RutaUsuario;
 import com.example.demo.model.Rutas;
 import com.example.demo.repository.LocalizacionRepository;

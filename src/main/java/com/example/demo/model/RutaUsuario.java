@@ -15,7 +15,8 @@ public class RutaUsuario {
 	private String rutaId;
 	private int puntuacion;
 	private boolean activo;
-
+	private float lat;
+	private float lng;
 
 	public String getId() {
 		return id;
@@ -32,6 +33,14 @@ public class RutaUsuario {
 	public boolean isActivo() {
 		return activo;
 	}
+	public float getLat() {
+		return lat;
+	}
+
+	public float getLng() {
+		return lng;
+	}
+
 
 
 	public void setId(String id) {
@@ -49,21 +58,26 @@ public class RutaUsuario {
 	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
-
-
+	public void setLat(float lat) {
+		this.lat = lat;
+	}
+	public void setLng(float lng) {
+		this.lng = lng;
+	}
 	public RutaUsuario(){
 
 	}
 
 
-	public RutaUsuario(String id, String usuarioId, String rutaId, int puntuacion, boolean activo) {
+	public RutaUsuario(String id, String usuarioId, String rutaId, int puntuacion, boolean activo, float lat, float lng) {
 		super();
 		this.id = id;
 		this.usuarioId = usuarioId;
 		this.rutaId = rutaId;
 		this.puntuacion = puntuacion;
 		this.activo = activo;
+		this.lat = lat;
+		this.lng = lng;
 	}
-
 
 }
